@@ -1,0 +1,22 @@
+{
+  "name": "batmap",
+  "version": "0.0.1",
+  "description": "A batmap of the city",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Lab21k/hackpuc2015.git"
+  },
+  "keywords": [
+    "hackpuc"
+  ],
+  "author": "Lab21k",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lab21k/hackpuc2015/issues"
+  },
+  "homepage": "https://github.com/Lab21k/hackpuc2015#readme"
+}
