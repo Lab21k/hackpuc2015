@@ -34,7 +34,31 @@ class StdOutListener(StreamListener):
             else:
                 print('LOCALIZACAO NAO EH RIO ', data_dict.get('place'))
         else:
-            print('NAO TEM GEO')
+            if data_dict.get('place'):
+                place = data_dict.get('place')
+                print("COM PLACE ", place)
+                try:
+                    if place['bounding_box']['coordinates'][0][0] == place['bounding_box']['coordinates'][0][1]:
+                        latitude = place['bounding_box']['coordinates'][0][0][1]
+                        longitude = place['bounding_box']['coordinates'][0][0][0]
+                        geo = geocoder.google([latitude, longitude], method='reverse')
+                        if geo.city == 'Rio de Janeiro':
+                            print('SUCESSOOOOOOOOOOO ', data_dict)
+                            name = data_dict.get('text')
+                            description = "{} - {}".format(data_dict.get('user')['name'], data_dict.get('text'))
+                            date = datetime.datetime.now().strftime('%Y-%m-%d')
+                            neighbourhood = geo.sublocality
+                            data_request = {'latitude': latitude, 'longitude': longitude, 'name': name, 'description': description, 'date': date, 'neighbourhood': neighbourhood, 'data': data_dict}
+                            requests.post(url, json=data_request)
+                        else:
+                            print('COORDENADAS DE PONTO, MAS NAO EH RIO')
+                    else:
+                        print("COORDENADAS NAO SAO UM PONTO")
+                except:
+                    print("NAO TEM COORDENADAS")
+
+            else:
+                print('NAO TEM GEO')
         return True
 
     def on_error(self, status):
