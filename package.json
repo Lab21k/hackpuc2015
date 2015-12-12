@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/Lab21k/hackpuc2015/issues"
   },
-  "homepage": "https://github.com/Lab21k/hackpuc2015#readme"
+  "homepage": "https://github.com/Lab21k/hackpuc2015#readme",
+  "dependencies": {
+    "pg": "^4.4.3",
+    "restify": "^4.0.3",
+    "sequelize": "^3.14.2"
+  }
 }
