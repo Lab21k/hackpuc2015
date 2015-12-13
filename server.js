@@ -10,7 +10,11 @@ server.use(restify.bodyParser());
 
 // Registering Routes
 require('./lib/routes/crimes')(server);
+require('./lib/routes/path')(server);
 
-server.listen(3000, () => {
+const io = require('./lib/socket');
+io.register(server);
+
+server.listen(3001, () => {
     console.log('%s listening at %s', server.name, server.url);
 });
